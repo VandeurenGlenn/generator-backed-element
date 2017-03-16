@@ -1,0 +1,22 @@
+{
+  "bundles": [
+    {
+      "src": "src/index.js",
+      "dest": "app/index.js",
+      "babel": {
+        "presets": [
+          [
+            "es2015",
+            {
+              "modules": false
+            }
+          ]
+        ],
+        "plugins": [
+          "external-helpers"
+        ]
+      }
+    }
+  ],
+  "format": ["cjs", "es"]
+}
