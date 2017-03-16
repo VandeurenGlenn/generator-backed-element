@@ -3,6 +3,7 @@
     {
       "src": "src/index.js",
       "dest": "app/index.js",
+      "format": "cjs",
       "babel": {
         "presets": [
           [
@@ -17,6 +18,5 @@
         ]
       }
     }
-  ],
-  "format": ["cjs", "es"]
+  ]
 }

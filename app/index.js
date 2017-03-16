@@ -228,4 +228,4 @@ var _class = function (_Generator) {
 }(Generator);
 
 module.exports = _class;
-//# sourceMappingURL=index-node.js.map
+//# sourceMappingURL=index.js.map
