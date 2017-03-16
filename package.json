@@ -1,6 +1,6 @@
 {
   "name": "generator-backed-element",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "generator/index.js",
   "license": "MIT",
   "repository": "https://github.com/vandeurenglenn/generator-backed-element",
