@@ -66,9 +66,7 @@ var possibleConstructorReturn = function (self, call) {
   return call && (typeof call === "object" || typeof call === "function") ? call : self;
 };
 
-var _require = require('yeoman-generator');
-var Generator = _require.Generator;
-
+var Generator = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
 var utils = require('backed-utils');
@@ -87,15 +85,18 @@ var _class = function (_Generator) {
   }
 
   createClass(_class, [{
-    key: 'prompting',
-    value: function prompting() {
-      var _this2 = this;
-
+    key: 'initializing',
+    value: function initializing() {
       this.props = {
         name: process.cwd().match(/\\(?:.(?!\\))+$/g)[0].replace(/\\/g, '')
       };
       // Have Yeoman greet the user.
       this.log(yosay('Welcome to the great ' + chalk.red('generator-backed-element') + ' generator!'));
+    }
+  }, {
+    key: 'prompting',
+    value: function prompting() {
+      var _this2 = this;
 
       var prompts = [{
         type: 'input',
@@ -171,9 +172,7 @@ var _class = function (_Generator) {
   }, {
     key: 'writing',
     value: function writing() {
-      this.fs.copy(this.templatePath('.gitignore'), this.destinationPath('.gitignore'));
-
-      this.fs.copy(this.templatePath('.editorconfig'), this.destinationPath('.editorconfig'));
+      this.fs.copy(this.templatePath('/.*'), this.destinationPath('./'));
 
       this.fs.copyTpl(this.templatePath('bower.json'), this.destinationPath('bower.json'), {
         name: this.props.name,

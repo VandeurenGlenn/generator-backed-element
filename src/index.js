@@ -1,5 +1,5 @@
 'use strict';
-const {Generator} = require('yeoman-generator');
+const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
 const utils = require('backed-utils');
@@ -12,7 +12,7 @@ export default class extends Generator {
     this.option('default');
   }
 
-  prompting() {
+  initializing() {
     this.props = {
       name: process.cwd().match(/\\(?:.(?!\\))+$/g)[0].replace(/\\/g, '')
     };
@@ -20,7 +20,9 @@ export default class extends Generator {
     this.log(yosay(
       'Welcome to the great ' + chalk.red('generator-backed-element') + ' generator!'
     ));
+  }
 
+  prompting() {
     var prompts = [{
       type: 'input',
       name: 'name',
@@ -95,13 +97,8 @@ export default class extends Generator {
 
   writing() {
     this.fs.copy(
-      this.templatePath('.gitignore'),
-      this.destinationPath('.gitignore')
-    );
-
-    this.fs.copy(
-      this.templatePath('.editorconfig'),
-      this.destinationPath('.editorconfig')
+      this.templatePath('/.*'),
+      this.destinationPath('./')
     );
 
     this.fs.copyTpl(
