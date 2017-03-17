@@ -1,6 +1,6 @@
 {
   "name": "generator-backed-element",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "main": "app/index.js",
   "license": "MIT",
   "repository": "https://github.com/vandeurenglenn/generator-backed-element",
@@ -15,7 +15,7 @@
   ],
   "files": [
     "app/index.js",
-    "templates/*"
+    "app/templates/*"
   ],
   "dependencies": {
     "backed-utils": "^0.0.2",
