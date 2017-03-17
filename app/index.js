@@ -1,5 +1,13 @@
 'use strict';
 
+function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+
+var Generator = _interopDefault(require('yeoman-generator'));
+var chalk = _interopDefault(require('chalk'));
+var yosay = _interopDefault(require('yosay'));
+var utils = _interopDefault(require('backed-utils'));
+var path = _interopDefault(require('path'));
+
 var classCallCheck = function (instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
@@ -66,11 +74,6 @@ var possibleConstructorReturn = function (self, call) {
   return call && (typeof call === "object" || typeof call === "function") ? call : self;
 };
 
-var Generator = require('yeoman-generator');
-var chalk = require('chalk');
-var yosay = require('yosay');
-var utils = require('backed-utils');
-
 var _class = function (_Generator) {
   inherits(_class, _Generator);
 
@@ -88,7 +91,7 @@ var _class = function (_Generator) {
     key: 'initializing',
     value: function initializing() {
       this.props = {
-        name: process.cwd().match(/\\(?:.(?!\\))+$/g)[0].replace(/\\/g, '')
+        name: path.posix.basename(process.cwd())
       };
       // Have Yeoman greet the user.
       this.log(yosay('Welcome to the great ' + chalk.red('generator-backed-element') + ' generator!'));
