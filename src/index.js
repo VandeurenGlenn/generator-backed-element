@@ -1,8 +1,9 @@
 'use strict';
-const Generator = require('yeoman-generator');
-const chalk = require('chalk');
-const yosay = require('yosay');
-const utils = require('backed-utils');
+import Generator from 'yeoman-generator';
+import chalk from 'chalk';
+import yosay from 'yosay';
+import utils from 'backed-utils';
+import path from 'path';
 
 export default class extends Generator {
   constructor(args, opts) {
@@ -14,7 +15,7 @@ export default class extends Generator {
 
   initializing() {
     this.props = {
-      name: process.cwd().match(/\\(?:.(?!\\))+$/g)[0].replace(/\\/g, '')
+      name: path.posix.basename(process.cwd())
     };
     // Have Yeoman greet the user.
     this.log(yosay(
