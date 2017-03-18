@@ -215,7 +215,7 @@ var _class = function (_Generator) {
       this.installDependencies({
         bower: true
       });
-      this.spawnCommandSync('yarn', ['global', 'add', 'backed-cli']);
+      this.spawnCommandSync('sudo', ['yarn', 'global', 'add', 'backed-cli']);
     }
   }, {
     key: 'end',

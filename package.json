@@ -1,6 +1,6 @@
 {
   "name": "generator-backed-element",
-  "version": "1.0.11",
+  "version": "1.0.13",
   "main": "app/index.js",
   "license": "MIT",
   "repository": "https://github.com/vandeurenglenn/generator-backed-element",
@@ -12,10 +12,6 @@
     "backed-element",
     "generator",
     "yeoman-generator"
-  ],
-  "files": [
-    "app/index.js",
-    "app/templates/*"
   ],
   "dependencies": {
     "backed-utils": "^0.0.2",
