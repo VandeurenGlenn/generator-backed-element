@@ -98,7 +98,7 @@ export default class extends Generator {
 
   writing() {
     this.fs.copy(
-      this.templatePath('/.*'),
+      this.templatePath('.*'),
       this.destinationPath('./')
     );
 
