@@ -175,7 +175,7 @@ var _class = function (_Generator) {
   }, {
     key: 'writing',
     value: function writing() {
-      this.fs.copy(this.templatePath('/.*'), this.destinationPath('./'));
+      this.fs.copy(this.templatePath('.*'), this.destinationPath('./'));
 
       this.fs.copyTpl(this.templatePath('bower.json'), this.destinationPath('bower.json'), {
         name: this.props.name,
