@@ -84,6 +84,7 @@ var _class = function (_Generator) {
     var _this = possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, args, opts));
 
     _this.option('default');
+    _this.argument('name', { required: false });
     return _this;
   }
 
@@ -96,7 +97,10 @@ var _class = function (_Generator) {
   }, {
     key: 'configuring',
     value: function configuring() {
-      this.composeWith(require.resolve('./../element'), { default: this.options.default });
+      this.composeWith(require.resolve('./../element'), {
+        default: this.options.default,
+        name: this.options.name
+      });
     }
   }, {
     key: 'end',

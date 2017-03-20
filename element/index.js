@@ -87,14 +87,16 @@ var _class = function (_Generator) {
     var _this = possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, args, opts));
 
     _this.option('default');
+    _this.argument('name', { type: 'string', required: false });
     return _this;
   }
 
   createClass(_class, [{
     key: 'initializing',
     value: function initializing() {
+      var name = this.options.name || path.win32.basename(process.cwd());
       this.props = {
-        name: path.win32.basename(process.cwd())
+        name: name
       };
     }
   }, {
@@ -106,7 +108,8 @@ var _class = function (_Generator) {
         type: 'input',
         name: 'name',
         message: 'Whats the name for your component?',
-        default: this.props.name
+        default: this.props.name,
+        when: !this.options.name
       }, {
         type: 'input',
         name: 'version',
