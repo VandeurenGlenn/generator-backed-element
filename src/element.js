@@ -13,11 +13,13 @@ export default class extends Generator {
 
     // This method adds support for a `--coffee` flag
     this.option('default');
+    this.argument('name', {type: 'string', required: false});
   }
 
   initializing() {
+    const name = this.options.name || path.win32.basename(process.cwd());
     this.props = {
-      name: path.win32.basename(process.cwd())
+      name: name
     };
   }
 
@@ -26,7 +28,8 @@ export default class extends Generator {
       type: 'input',
       name: 'name',
       message: 'Whats the name for your component?',
-      default: this.props.name
+      default: this.props.name,
+      when: !this.options.name
     }, {
       type: 'input',
       name: 'version',

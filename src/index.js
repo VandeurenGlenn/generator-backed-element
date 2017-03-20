@@ -11,6 +11,7 @@ export default class extends Generator {
 
     // This method adds support for a `--coffee` flag
     this.option('default');
+    this.argument('name', {required: false});
   }
 
   initializing() {
@@ -21,7 +22,10 @@ export default class extends Generator {
   }
 
   configuring() {
-    this.composeWith(require.resolve('./../element'), {default: this.options.default});
+    this.composeWith(require.resolve('./../element'), {
+      default: this.options.default,
+      name: this.options.name
+    });
   }
 
   end() {
