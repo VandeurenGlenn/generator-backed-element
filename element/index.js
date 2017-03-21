@@ -209,7 +209,7 @@ var _class = function (_Generator) {
         name: this.props.name
       });
 
-      this.fs.copyTpl(this.templatePath('demo.html'), this.destinationPath('demo/demo.html'), {
+      this.fs.copyTpl(this.templatePath('demo.html'), this.destinationPath('demo/index.html'), {
         name: this.props.name
       });
     }
