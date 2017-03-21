@@ -2,8 +2,8 @@
   "bundles": [
     {
       "src": "src/<%= name %>.js",
-      "dest": "dist/<%= name %>.js",
-      "format": "iife"
+      "dest": "dist/<%= name %>.js"
     }
-  ]
+  ],
+  "format": ["iife", "es"]
 }
