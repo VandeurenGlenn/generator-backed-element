@@ -1,9 +1,18 @@
 {
   "name": "<%= name %>",
   "version": "<%= version %>",
+  "main": "dist/<%= name %>.js",
+  "module": "dist/<%= name %>-es.js",
   "author": {
     "name": "<%= authorName %>",
     "email": "<%= authorEmail %>",
     "url": "<%= authorUrl %>"
+  },
+  "dependencies": {
+    "backed": "*"
+  },
+  "esdoc": {
+    "source": "./src/<%= name %>.js",
+    "destination": "./docs"
   }
 }
