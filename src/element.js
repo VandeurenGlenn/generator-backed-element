@@ -153,7 +153,7 @@ export default class extends Generator {
 
     this.fs.copyTpl(
       this.templatePath('demo.html'),
-      this.destinationPath('demo/demo.html'),
+      this.destinationPath('demo/index.html'),
       {
         name: this.props.name
       }
