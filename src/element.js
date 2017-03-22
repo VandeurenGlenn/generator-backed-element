@@ -18,8 +18,11 @@ export default class extends Generator {
 
   initializing() {
     const name = this.options.name || path.win32.basename(process.cwd());
+    const _className = utils.toJsProp(name);
+    const className = _className.charAt(0).toUpperCase() + _className.slice(1);
     this.props = {
-      name: name
+      name: name,
+      className: className
     };
   }
 
@@ -127,7 +130,7 @@ export default class extends Generator {
       this.templatePath('backed-element.js'),
       this.destinationPath(`src/${this.props.name}.js`),
       {
-        className: utils.toJsProp(this.props.name)
+        className: this.props.className
       }
     );
 
@@ -149,9 +152,6 @@ export default class extends Generator {
   }
 
   install() {
-    this.installDependencies({
-      bower: true
-    });
     try {
       console.log(chalk.yellow('backed version'))
       this.spawnCommandSync('backed', ['version']);
@@ -163,10 +163,15 @@ export default class extends Generator {
         this.spawnCommandSync('sudo', ['yarn', 'global', 'add', 'backed-cli']);
       }
     }
+    this.log('Swiping things up');
+    this.spawnCommand('rm', ['-rf', 'node_modules']);
+    this.installDependencies({
+      bower: false,
+      npm: false,
+      yarn: true
+    });
   }
 
   end() {
-    this.log('Swiping things up');
-    this.spawnCommand('rm', ['-rf', 'node_modules']);
   }
 }
