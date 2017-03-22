@@ -95,8 +95,11 @@ var _class = function (_Generator) {
     key: 'initializing',
     value: function initializing() {
       var name = this.options.name || path.win32.basename(process.cwd());
+      var _className = utils.toJsProp(name);
+      var className = _className.charAt(0).toUpperCase() + _className.slice(1);
       this.props = {
-        name: name
+        name: name,
+        className: className
       };
     }
   }, {
@@ -194,7 +197,7 @@ var _class = function (_Generator) {
       });
 
       this.fs.copyTpl(this.templatePath('backed-element.js'), this.destinationPath('src/' + this.props.name + '.js'), {
-        className: utils.toJsProp(this.props.name)
+        className: this.props.className
       });
 
       this.fs.copyTpl(this.templatePath('backed-element.html'), this.destinationPath(this.props.name + '.html'), {
@@ -208,9 +211,6 @@ var _class = function (_Generator) {
   }, {
     key: 'install',
     value: function install() {
-      this.installDependencies({
-        bower: true
-      });
       try {
         console.log(chalk.yellow('backed version'));
         this.spawnCommandSync('backed', ['version']);
@@ -222,13 +222,17 @@ var _class = function (_Generator) {
           this.spawnCommandSync('sudo', ['yarn', 'global', 'add', 'backed-cli']);
         }
       }
+      this.log('Swiping things up');
+      this.spawnCommand('rm', ['-rf', 'node_modules']);
+      this.installDependencies({
+        bower: false,
+        npm: false,
+        yarn: true
+      });
     }
   }, {
     key: 'end',
-    value: function end() {
-      this.log('Swiping things up');
-      this.spawnCommand('rm', ['-rf', 'node_modules']);
-    }
+    value: function end() {}
   }]);
   return _class;
 }(Generator);
