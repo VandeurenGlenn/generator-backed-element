@@ -86,17 +86,6 @@ var _class = function (_Generator) {
     return _this;
   }
   createClass(_class, [{
-    key: 'initializing',
-    value: function initializing() {
-      var name = this.options.name || path.win32.basename(process.cwd());
-      var _className = utils.toJsProp(name);
-      var className = _className.charAt(0).toUpperCase() + _className.slice(1);
-      this.props = {
-        name: name,
-        className: className
-      };
-    }
-  }, {
     key: 'prompting',
     value: function prompting() {
       var _this2 = this;
@@ -175,6 +164,7 @@ var _class = function (_Generator) {
   }, {
     key: 'writing',
     value: function writing() {
+      var moduleName = utils.toJsProp(name);
       this.fs.copy(this.templatePath('.*'), this.destinationPath('./'));
       this.fs.copyTpl(this.templatePath('package.json'), this.destinationPath('package.json'), {
         name: this.props.name,
@@ -184,10 +174,11 @@ var _class = function (_Generator) {
         authorUrl: this.props.authorUrl
       });
       this.fs.copyTpl(this.templatePath('backed.json'), this.destinationPath('backed.json'), {
-        name: this.props.name
+        name: this.props.name,
+        moduleName: moduleName
       });
       this.fs.copyTpl(this.templatePath('backed-element.js'), this.destinationPath('src/' + this.props.name + '.js'), {
-        className: this.props.className
+        className: moduleName.charAt(0).toUpperCase() + moduleName.slice(1)
       });
       this.fs.copyTpl(this.templatePath('backed-element.html'), this.destinationPath(this.props.name + '.html'), {
         name: this.props.name
