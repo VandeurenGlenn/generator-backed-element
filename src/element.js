@@ -81,6 +81,9 @@ export default class extends Generator {
     if (this.options.default) return;
     else return this.prompt(prompts).then(props => {
       // To access props later use this.props.someAnswer;
+      if (this.options.name) {
+        this.props.name = this.options.name;
+      }
       this.props = props;
     });
   }
@@ -165,13 +168,11 @@ export default class extends Generator {
     }
     this.log('Swiping things up');
     this.spawnCommand('rm', ['-rf', 'node_modules']);
+
     this.installDependencies({
       bower: false,
       npm: false,
       yarn: true
     });
-  }
-
-  end() {
   }
 }
