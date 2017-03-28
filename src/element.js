@@ -82,7 +82,7 @@ export default class extends Generator {
     else return this.prompt(prompts).then(props => {
       // To access props later use this.props.someAnswer;
       if (this.options.name) {
-        this.props.name = this.options.name;
+        props.name = this.options.name;
       }
       this.props = props;
     });
