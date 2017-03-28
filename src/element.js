@@ -21,7 +21,7 @@ export default class extends Generator {
       type: 'input',
       name: 'name',
       message: 'Whats the name for your component?',
-      default: this.props.name,
+      default: process.cwd(),
       when: !this.options.name
     }, {
       type: 'input',
@@ -31,13 +31,11 @@ export default class extends Generator {
     }, {
       type: 'input',
       name: 'description',
-      message: 'Description',
-      when: !this.props.description
+      message: 'Description'
     }, {
       type: 'input',
       name: 'homepage',
-      message: 'Project homepage url',
-      when: !this.props.homepage
+      message: 'Project homepage url'
     }, {
       type: 'input',
       store: true,
