@@ -4,7 +4,7 @@
       "src": "src/<%= name %>.js",
       "dest": "dist/<%= name %>.js",
       "moduleName": "<%= moduleName %>",
-      "format": ["iife", "es"]
+      "format": "<%= format %>"
     }
   ]
 }

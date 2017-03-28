@@ -30,6 +30,11 @@ export default class extends Generator {
       default: '0.0.0'
     }, {
       type: 'input',
+      name: 'format',
+      message: 'Format to export as, options are [cjs, es, iife, amd]',
+      default: 'iife'
+    }, {
+      type: 'input',
       name: 'description',
       message: 'Description'
     }, {
@@ -116,7 +121,8 @@ export default class extends Generator {
       this.destinationPath('backed.json'),
       {
         name: this.props.name,
-        moduleName: moduleName
+        moduleName: moduleName,
+        format: this.props.format || 'es'
       }
     );
 
