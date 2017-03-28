@@ -4,35 +4,39 @@
       "src": "src/index.js",
       "dest": "app/index.js",
       "format": "cjs",
-      "babel": {
-        "presets": [
-          [
-            "es2015",
-            {
-              "modules": false
-            }
+      "plugins": {
+        "babel": {
+          "presets": [
+            [
+              "es2015",
+              {
+                "modules": false
+              }
+            ]
+          ],
+          "plugins": [
+            "external-helpers"
           ]
-        ],
-        "plugins": [
-          "external-helpers"
-        ]
+        }
       }
     }, {
       "src": "src/element.js",
       "dest": "element/index.js",
       "format": "cjs",
-      "babel": {
-        "presets": [
-          [
-            "es2015",
-            {
-              "modules": false
-            }
+      "plugins": {
+        "babel": {
+          "presets": [
+            [
+              "es2015",
+              {
+                "modules": false
+              }
+            ]
+          ],
+          "plugins": [
+            "external-helpers"
           ]
-        ],
-        "plugins": [
-          "external-helpers"
-        ]
+        }
       }
     }
   ]
