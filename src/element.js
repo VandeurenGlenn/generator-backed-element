@@ -94,7 +94,7 @@ export default class extends Generator {
   }
 
   writing() {
-    const moduleName = utils.toJsProp(name);
+    const moduleName = utils.toJsProp(this.props.name);
 
     this.fs.copy(
       this.templatePath('.*'),
