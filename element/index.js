@@ -164,7 +164,7 @@ var _class = function (_Generator) {
   }, {
     key: 'writing',
     value: function writing() {
-      var moduleName = utils.toJsProp(name);
+      var moduleName = utils.toJsProp(this.props.name);
       this.fs.copy(this.templatePath('.*'), this.destinationPath('./'));
       this.fs.copyTpl(this.templatePath('package.json'), this.destinationPath('package.json'), {
         name: this.props.name,
