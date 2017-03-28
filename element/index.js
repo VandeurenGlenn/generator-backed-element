@@ -76,21 +76,15 @@ var possibleConstructorReturn = function (self, call) {
 };
 
 var platform = os.platform();
-
 var _class = function (_Generator) {
   inherits(_class, _Generator);
-
   function _class(args, opts) {
     classCallCheck(this, _class);
-
-    // This method adds support for a `--coffee` flag
     var _this = possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, args, opts));
-
     _this.option('default');
     _this.argument('name', { type: 'string', required: false });
     return _this;
   }
-
   createClass(_class, [{
     key: 'initializing',
     value: function initializing() {
@@ -106,7 +100,6 @@ var _class = function (_Generator) {
     key: 'prompting',
     value: function prompting() {
       var _this2 = this;
-
       var prompts = [{
         type: 'input',
         name: 'name',
@@ -157,9 +150,10 @@ var _class = function (_Generator) {
         name: 'keywords',
         message: 'Package keywords (comma to split)'
       }];
-
       if (this.options.default) return;else return this.prompt(prompts).then(function (props) {
-        // To access props later use this.props.someAnswer;
+        if (_this2.options.name) {
+          _this2.props.name = _this2.options.name;
+        }
         _this2.props = props;
       });
     }
@@ -170,7 +164,6 @@ var _class = function (_Generator) {
         name: this.props.name,
         githubAccount: this.props.authorEmail
       });
-
       if (this.props.license) {
         this.composeWith(require.resolve('generator-license/app'), {
           name: this.props.authorName,
@@ -183,7 +176,6 @@ var _class = function (_Generator) {
     key: 'writing',
     value: function writing() {
       this.fs.copy(this.templatePath('.*'), this.destinationPath('./'));
-
       this.fs.copyTpl(this.templatePath('package.json'), this.destinationPath('package.json'), {
         name: this.props.name,
         version: this.props.version,
@@ -191,19 +183,15 @@ var _class = function (_Generator) {
         authorEmail: this.props.authorEmail,
         authorUrl: this.props.authorUrl
       });
-
       this.fs.copyTpl(this.templatePath('backed.json'), this.destinationPath('backed.json'), {
         name: this.props.name
       });
-
       this.fs.copyTpl(this.templatePath('backed-element.js'), this.destinationPath('src/' + this.props.name + '.js'), {
         className: this.props.className
       });
-
       this.fs.copyTpl(this.templatePath('backed-element.html'), this.destinationPath(this.props.name + '.html'), {
         name: this.props.name
       });
-
       this.fs.copyTpl(this.templatePath('demo.html'), this.destinationPath('demo/index.html'), {
         name: this.props.name
       });
@@ -230,9 +218,6 @@ var _class = function (_Generator) {
         yarn: true
       });
     }
-  }, {
-    key: 'end',
-    value: function end() {}
   }]);
   return _class;
 }(Generator);

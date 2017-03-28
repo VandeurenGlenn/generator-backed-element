@@ -76,22 +76,16 @@ var possibleConstructorReturn = function (self, call) {
 
 var _class = function (_Generator) {
   inherits(_class, _Generator);
-
   function _class(args, opts) {
     classCallCheck(this, _class);
-
-    // This method adds support for a `--coffee` flag
     var _this = possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, args, opts));
-
     _this.option('default');
     _this.argument('name', { required: false });
     return _this;
   }
-
   createClass(_class, [{
     key: 'initializing',
     value: function initializing() {
-      // Have Yeoman greet the user.
       this.log(yosay('Welcome to the great ' + chalk.red('generator-backed-element') + ' generator!'));
     }
   }, {
