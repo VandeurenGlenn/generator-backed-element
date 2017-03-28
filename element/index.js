@@ -102,6 +102,11 @@ var _class = function (_Generator) {
         default: '0.0.0'
       }, {
         type: 'input',
+        name: 'format',
+        message: 'Format to export as, options are [cjs, es, iife, amd]',
+        default: 'iife'
+      }, {
+        type: 'input',
         name: 'description',
         message: 'Description'
       }, {
@@ -173,7 +178,8 @@ var _class = function (_Generator) {
       });
       this.fs.copyTpl(this.templatePath('backed.json'), this.destinationPath('backed.json'), {
         name: this.props.name,
-        moduleName: moduleName
+        moduleName: moduleName,
+        format: this.props.format || 'es'
       });
       this.fs.copyTpl(this.templatePath('backed-element.js'), this.destinationPath('src/' + this.props.name + '.js'), {
         className: moduleName.charAt(0).toUpperCase() + moduleName.slice(1)
