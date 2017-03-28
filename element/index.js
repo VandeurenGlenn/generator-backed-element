@@ -152,7 +152,7 @@ var _class = function (_Generator) {
       }];
       if (this.options.default) return;else return this.prompt(prompts).then(function (props) {
         if (_this2.options.name) {
-          _this2.props.name = _this2.options.name;
+          props.name = _this2.options.name;
         }
         _this2.props = props;
       });
