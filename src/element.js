@@ -16,16 +16,6 @@ export default class extends Generator {
     this.argument('name', {type: 'string', required: false});
   }
 
-  initializing() {
-    const name = this.options.name || path.win32.basename(process.cwd());
-    const _className = utils.toJsProp(name);
-    const className = _className.charAt(0).toUpperCase() + _className.slice(1);
-    this.props = {
-      name: name,
-      className: className
-    };
-  }
-
   prompting() {
     var prompts = [{
       type: 'input',
@@ -104,6 +94,8 @@ export default class extends Generator {
   }
 
   writing() {
+    const moduleName = utils.toJsProp(name);
+
     this.fs.copy(
       this.templatePath('.*'),
       this.destinationPath('./')
@@ -125,7 +117,8 @@ export default class extends Generator {
       this.templatePath('backed.json'),
       this.destinationPath('backed.json'),
       {
-        name: this.props.name
+        name: this.props.name,
+        moduleName: moduleName
       }
     );
 
@@ -133,7 +126,7 @@ export default class extends Generator {
       this.templatePath('backed-element.js'),
       this.destinationPath(`src/${this.props.name}.js`),
       {
-        className: this.props.className
+        className: moduleName.charAt(0).toUpperCase() + moduleName.slice(1)
       }
     );
 
