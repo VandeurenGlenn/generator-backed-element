@@ -4,11 +4,8 @@
  * @extends HTMLElement
  */
 export default Backed(class <%= className %> extends HTMLElement {
-  constructor() {
-    // Only super is called here
-    // avoid using a constructor
-    // more info @ https://github.com/VandeurenGlenn/backed/issues/4
-    super();
+  created() {
+    // good place to setup shadowRoot etc
   }
   /**
    * Called when Backed is finished setting up,
